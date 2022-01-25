@@ -23,7 +23,7 @@ jobs:
     runs-on: self-hosted
     needs: [check-commit]
     container:
-      image: localhost:5000/megengine-ci:latest
+      image: localhost:5000/megengine-ci:v1
     steps:
       - name: Checkout MegEngine
         uses: actions/checkout@v2
@@ -47,9 +47,9 @@ jobs:
     runs-on: self-hosted
     needs: [check-commit]
     container:
-      image: localhost:5000/megengine-ci:latest
+      image: localhost:5000/megengine-ci:v1
       volumes:
-        - /usr/local/cuda-10.1-libs:/usr/local/cuda-10.1-libs
+        - /usr/local/cuda-10.1-cudnn-7.6.3-trt-6.0.1.5-libs:/usr/local/cuda-10.1-cudnn-7.6.3-trt-6.0.1.5-libs
       options: --gpus all --shm-size 1g
       env:
         NCCL_LAUNCH_MODE: PARALLEL
